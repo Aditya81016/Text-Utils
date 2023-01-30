@@ -2,13 +2,7 @@
   <div class="container my-3">
     <h1>Textarea</h1>
     <div class="form-floating my-3">
-      <textarea
-        class="form-control"
-        id="textarea"
-        v-model="text"
-        style="height: 50vh"
-        placeholder="###"
-      ></textarea>
+      <textarea class="form-control" id="textarea" v-model="text" style="height: 50vh" placeholder="###"></textarea>
       <label id="label" for="textarea">Enter your text here...</label>
     </div>
     <div class="containe d-flex justify-content-between">
@@ -20,13 +14,17 @@
         </p>
       </div>
       <div class="d-flex gap-0">
-        <butt
-          text="<img src='..\icons\backspace-icon.svg'>"
-          title="Extra Space"
-          content="remove extra space"
-        ></butt>
+        <span @click="removeSpace">
+          <butt text='<img src="src\icons\backspace-icon.svg">' title="Extra Space" content="remove extra space"></butt>
+        </span>
+        <span @click="copy">
+          <butt text='<img src="src\icons\copy.svg">' title="Copy Text" content="copy the text in the textarea"></butt>
+        </span>
       </div>
     </div>
+    <h4>Preview</h4>
+    <pre>{{ text }}</pre>
+
   </div>
 </template>
 
@@ -42,6 +40,14 @@ export default {
         if (text[i] == " " && text[i + 1] != " ") c++;
 
       return c;
+    },
+
+    removeSpace() {
+      this.text = this.text.replace(/\s+/g, " ");
+    },
+
+    copy() {
+      navigator.clipboard.writeText(this.text);
     },
   },
   data() {
@@ -75,8 +81,9 @@ img {
   color: white;
 }
 
-p {
-  color: gray;
+p,
+pre {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 h1 {
