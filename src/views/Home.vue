@@ -19,12 +19,33 @@
           words : {{ noOfWords() }}
         </p>
       </div>
-      <div class="d-flex gap-0">
+      <div class="d-flex gap-0 group">
         <span @click="removeSpace">
           <butt
             text='<img src="src\icons\backspace-icon.svg">'
             title="Extra Space"
             content="remove extra space"
+          ></butt>
+        </span>
+        <span @click="copy">
+          <butt
+            text='<img src="src\icons\copy.svg">'
+            title="Copy Text"
+            content="copy the text in the textarea"
+          ></butt>
+        </span>
+        <span @click="copy">
+          <butt
+            text='<img src="src\icons\copy.svg">'
+            title="Copy Text"
+            content="copy the text in the textarea"
+          ></butt>
+        </span>
+        <span @click="copy">
+          <butt
+            text='<img src="src\icons\copy.svg">'
+            title="Copy Text"
+            content="copy the text in the textarea"
           ></butt>
         </span>
         <span @click="copy">
@@ -56,7 +77,7 @@ export default {
     },
 
     removeSpace() {
-      this.text = this.text.replace(/\s+/g, " ");
+      this.text = this.text.replace(/[ \t]+/g, " ").trim();
     },
 
     copy() {
@@ -102,4 +123,26 @@ pre {
 h1 {
   text-align: center;
 }
+
+.group {
+  max-width: calc(100vw - 300px);
+  overflow-x: scroll;
+  /* scrollbar-width: 0px; */
+}
+
+.group::-webkit-scrollbar {
+  height: 3px;
+  transform: translate(-1000, -100)
+}
+
+.group::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+ 
+.group::-webkit-scrollbar-thumb {
+  background-color: rgb(255, 255, 255);
+  outline: 0px solid slategrey;
+}
+
 </style>

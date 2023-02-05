@@ -1,5 +1,5 @@
 <template>
-  <button type="button" class="btn btn-outline-primary" v-html="text"></button>
+  <button type="button" class="btn btn-outline-primary d-flex justify-content-center align-items-center" v-html="text"></button>
   <div class="container popover">
     <div class="title">{{ title }}</div>
     <div class="content">{{ content }}</div>
@@ -33,6 +33,9 @@ export default {
 button {
   border-width: 3px;
   transform: scale(0.7);
+  width: 69px;
+  height: 69px;
+  
 }
 
 button:hover + .popover {
